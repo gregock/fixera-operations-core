@@ -1,0 +1,54 @@
+{
+  "scenario": "Synthetic Notion-originated service job for a wall shelf installation",
+  "intake": {
+    "source_system": "notion",
+    "external_source": "notion",
+    "external_id": "notion-page-synthetic-001",
+    "job_type": "Imported Job",
+    "title": "Install wall shelf",
+    "service_slug": "repairs",
+    "source": "notion",
+    "landing_url": "/services/repairs"
+  },
+  "lifecycle": {
+    "current_status": "paid"
+  },
+  "cost_capture": {
+    "price_charged": 850,
+    "materials_cost_estimate": 120,
+    "actual_hours": 1.5
+  },
+  "profit_summary": {
+    "gross_revenue": 850,
+    "materials_cost": 120,
+    "commission_cost": 0,
+    "labor_hours": 1.5,
+    "net_before_personal_tax": 730,
+    "effective_hourly_net": 486.67
+  },
+  "decision_output": {
+    "generated_at": "2026-06-18T12:00:00Z",
+    "window_days": 30,
+    "actions": [
+      {
+        "action_type": "improve_existing_page",
+        "priority": "medium",
+        "priority_score": 58,
+        "page": "/services/repairs",
+        "service_slug": "repairs",
+        "reason": "The page has visible demand and at least one conversion signal, but the evidence still supports incremental page improvement.",
+        "evidence": {
+          "visits": 120,
+          "leads": 1,
+          "jobs": 1,
+          "impressions": 430,
+          "clicks": 14,
+          "ctr": 0.0326,
+          "avg_position": 11.8,
+          "profit": 730
+        },
+        "recommended_action": "Refine page copy and CTA placement."
+      }
+    ]
+  }
+}
