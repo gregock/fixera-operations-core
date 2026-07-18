@@ -1,8 +1,20 @@
 # Fixera Core Portfolio Edition
 
-This repository is the public Portfolio Edition of `fixera-core`.
+Fixera Core is a local-first operations and intelligence backend for a real service business.
 
-It exists to show the engineering behind the production system without exposing operational data, private business context, runtime artifacts, or sensitive configuration.
+It models jobs, costs, lifecycle state, reporting, and decision support as one coherent operational system instead of a set of disconnected notes, spreadsheets, and manual follow-up steps.
+
+This public Portfolio Edition shows the engineering behind the private production system without exposing operational data, private business context, runtime artifacts, or sensitive configuration.
+
+## What This Demonstrates
+
+This project is meant to show practical backend judgment: how to define the source of truth, protect state transitions, derive useful outputs, and keep automation accountable.
+
+- local-first backend design with SQLite as the canonical operational store
+- stateful job lifecycle modeling with validation before status changes
+- derived financial reporting instead of duplicated source ledgers
+- refresh-driven dashboard outputs and public-safe evidence packaging
+- read-only decision support that ranks actions without executing them automatically
 
 ## What Is Included
 
@@ -13,6 +25,18 @@ It exists to show the engineering behind the production system without exposing 
 - synthetic sample JSON for job and lead-like evidence
 - a promotion manifest that explains what can and cannot be published
 - validation and provenance notes for the synthetic sample package
+
+## Repository Map
+
+- [case-study.md](case-study.md) - public case study and engineering narrative
+- [docs/architecture.md](docs/architecture.md) - public-safe architecture summary
+- [docs/workflows.md](docs/workflows.md) - public-safe workflow summary
+- [docs/safety-boundaries.md](docs/safety-boundaries.md) - publication and privacy boundary
+- [public-proof/README.md](public-proof/README.md) - index of the public evidence package
+- [public-proof/examples/representative-operational-flow/](public-proof/examples/representative-operational-flow/) - synthetic job and lead examples
+- [public-proof/diagrams/architecture-v1.md](public-proof/diagrams/architecture-v1.md) - sanitized architecture diagram
+- [public-proof/diagrams/workflow-v1.md](public-proof/diagrams/workflow-v1.md) - sanitized workflow diagram
+- [public-proof/manifest/evidence-manifest.md](public-proof/manifest/evidence-manifest.md) - evidence promotion contract
 
 What it is:
 - a curated public showcase of architecture, workflows, and engineering decisions

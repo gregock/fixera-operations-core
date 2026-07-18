@@ -1,8 +1,12 @@
 # Manifest
 
-This folder contains the evidence contract and future promotion rules.
+This folder contains the evidence contract and promotion rules for public artifacts.
 
-It belongs here because the Portfolio Edition should document how evidence is selected before it shows any evidence.
+It belongs here because the Portfolio Edition should document how evidence is selected, transformed, redacted, and verified.
+
+Current manifest:
+
+- [evidence-manifest.md](evidence-manifest.md)
 
 Do not commit:
 - extracted evidence
