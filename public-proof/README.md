@@ -22,8 +22,9 @@ This folder contains the public-safe evidence set for `fixera-core`.
 
 - Synthetic JSON samples are kept inside `examples/representative-operational-flow/` so the data, validation notes, and provenance stay together.
 - `sample-json/` exists only as a publication rule note, not as the active sample location.
-- Screenshots and smoke-output captures are not part of the current public evidence package.
-- Future screenshots or smoke outputs should be added only when they can be sanitized cleanly and add real review value.
+- Screenshots and executable smoke-test captures are not part of the current public evidence package.
+- Public validation notes live in `tests/smoke/README.md` because this repo publishes documentation, diagrams, and synthetic JSON rather than executable production code.
+- Future screenshots or executable smoke outputs should be added only when they can be sanitized cleanly and add real review value.
 
 ## Rule Set
 
