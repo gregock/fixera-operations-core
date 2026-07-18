@@ -6,6 +6,8 @@ It models jobs, costs, lifecycle state, reporting, and decision support as one c
 
 This public Portfolio Edition shows the engineering behind the private production system without exposing operational data, private business context, runtime artifacts, or sensitive configuration.
 
+The production system, live database, runtime configuration, customer records, and operational history are not included in this repository.
+
 ## What This Demonstrates
 
 This project is meant to show practical backend judgment: how to define the source of truth, protect state transitions, derive useful outputs, and keep automation accountable.
