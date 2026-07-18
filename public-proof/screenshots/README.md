@@ -1,11 +1,5 @@
 # Screenshots
 
-This folder will hold sanitized or mock screenshots that demonstrate the public-facing shape of the system.
+This folder is reserved for sanitized or mock screenshots.
 
-It belongs here for evidence only, not production captures.
-
-Do not commit:
-- live customer data
-- private business metrics
-- credentials
-- raw operational screens
+Only include images that explain the public shape of the system without exposing production content.

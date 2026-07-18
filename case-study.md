@@ -21,6 +21,15 @@ Fixera Core models operational work as a pipeline rather than a set of disconnec
 
 Notion is the active input surface for jobs. The Notion sync path maps those jobs into the canonical Core job model and stores them in SQLite. Job lifecycle changes are validated against canonical states before they are accepted. Costs, labor, and job price are captured on the job record. Profit is derived in `profit_analysis` rather than treated as a source ledger. Refresh writes dashboard snapshots, and the decision layer reads only existing data to produce prioritized, read-only outputs.
 
+The public-safe representation in this repository focuses on the parts a reviewer can actually evaluate:
+
+- intake and normalization
+- canonical job lifecycle control
+- derived profit calculation
+- refresh-driven reporting
+- read-only decision support
+- public/private evidence separation
+
 At the system level, that means the business can move from intake to operational state to financial summary to decision support without collapsing everything into free text.
 
 ## Representative Flow
@@ -43,8 +52,15 @@ It shows one synthetic service job moving through the full flow:
 The supporting files in that package are:
 
 - `synthetic-job.json`
+- `lead-event-example.json`
 - `validation.md`
 - `provenance.md`
+
+Additional public evidence:
+
+- [public-proof/diagrams/architecture-v1.md](public-proof/diagrams/architecture-v1.md)
+- [public-proof/diagrams/workflow-v1.md](public-proof/diagrams/workflow-v1.md)
+- [public-proof/manifest/evidence-manifest.md](public-proof/manifest/evidence-manifest.md)
 
 ## Key Engineering Decisions
 
@@ -54,6 +70,7 @@ The supporting files in that package are:
 - Derived profit layer. `profit_analysis` is computed from job-related inputs rather than treated as source truth.
 - Read-only decision support. The decision layer ranks and surfaces actions, but does not execute them automatically.
 - Public/private evidence boundary. The portfolio publishes synthetic and sanitized evidence only, while the private production repository stays private.
+- Evidence package discipline. The public repository includes explicit provenance and validation notes so the sample cannot be mistaken for a production export.
 
 ## Tradeoffs
 

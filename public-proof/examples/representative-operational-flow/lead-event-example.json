@@ -1,0 +1,17 @@
+{
+  "event_id": "lead-synth-001",
+  "event_type": "whatsapp_click",
+  "landing_page": "/services/shelf-installation/",
+  "page_key": "shelf-installation",
+  "source": "organic",
+  "medium": "organic",
+  "campaign": "synthetic-demo",
+  "cta_label": "WhatsApp",
+  "timestamp_utc": "2026-06-12T08:15:00Z",
+  "is_test": false,
+  "is_internal": false,
+  "notes": [
+    "Synthetic example only",
+    "Represents a cleaned first-party lead event"
+  ]
+}

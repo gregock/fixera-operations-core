@@ -1,11 +1,17 @@
 # Sample JSON
 
-This folder will hold public-safe sample payloads that demonstrate the repository's data contracts.
+This folder is reserved for synthetic data samples.
 
-It belongs here for minimal, synthetic examples only.
+Only include records that are invented for publication and verified to be safe.
 
-Do not commit:
-- real production exports
-- private operational records
-- secrets
-- runtime snapshots
+Current expected samples:
+
+- synthetic job record
+- synthetic lead/event record
+
+Do not add:
+
+- production exports
+- client identifiers
+- operational logs
+- timestamps that can be tied to a live event

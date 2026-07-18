@@ -29,3 +29,13 @@ Promotion standard:
 
 Use this manifest as the gate for future public evidence.
 It is a process contract, not an evidence store.
+
+## Current Public Set
+
+- one synthetic job record
+- one synthetic lead/event record
+- one sanitized architecture diagram
+- one sanitized workflow diagram
+- provenance and validation notes for the sample package
+
+Anything beyond that should be added only if it can be published without exposing production data or operational history.

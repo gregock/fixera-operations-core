@@ -1,15 +1,26 @@
 # Safety Boundaries
 
-This document will define what must stay out of the public Portfolio Edition and how the public/private boundary is preserved.
+This document defines what stays out of the public Portfolio Edition.
 
-It belongs here so the repository stays honest, safe, and easy to maintain.
+## Do not publish
 
-Do not commit:
+- production data
 - secrets
 - credentials
-- databases
 - logs
 - backups
-- launchd configs
-- operational exports
 - internal incident notes
+- private infrastructure references
+- raw operational exports
+
+## Public-safe material
+
+- architecture diagrams
+- synthetic sample data
+- workflow summaries
+- sanitized validation notes
+- boundary explanations
+
+## Review rule
+
+If a file would reveal a real client, a live operational event, or the private runtime shape, it belongs in the private repository instead.

@@ -1,11 +1,5 @@
 # Smoke Tests
 
-This folder will hold optional lightweight checks for the public sample artifacts.
+This folder is reserved for lightweight checks that verify the public-safe evidence set.
 
-It belongs here only if the tests verify the public-safe showcase without introducing production logic.
-
-Do not commit:
-- production test fixtures
-- private data
-- secrets
-- operational logs
+Keep the checks limited to public artifacts only.
