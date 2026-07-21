@@ -9,6 +9,7 @@ import sys
 COMMANDS = [
     [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
     [sys.executable, "-m", "scripts.validate_public_evidence"],
+    [sys.executable, "-m", "scripts.validate_public_docs"],
 ]
 
 

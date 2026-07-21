@@ -1,4 +1,4 @@
-# Fixera Core Portfolio Edition
+# Fixera Operations Core
 
 Fixera Core was designed and used privately as a local-first operations system for a real service business.
 The private system organizes jobs, costs, lifecycle state, reporting, and decision support as one coherent operational model instead of scattered notes, spreadsheets, and manual follow-up.
@@ -88,13 +88,17 @@ That command runs:
 
 - the unittest suite for the public validator
 - the public evidence validator itself
+- the tracked Markdown portability validator
 
 What it proves:
 
 - required public evidence files exist
 - the synthetic JSON samples parse and contain required markers
 - manifest references resolve to real files
-- the committed public package does not include obvious prohibited runtime artifacts
+- Git-tracked publication content does not include prohibited runtime artifacts
+- tracked Markdown links are portable and resolve inside the repository
+
+This validation checks the public evidence package only. It does not validate the private production backend.
 
 What it does not prove:
 

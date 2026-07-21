@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Callable
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -84,9 +86,17 @@ class ValidationError(Exception):
     """Raised when public evidence validation fails."""
 
 
-def validate(repo_root: Path = REPO_ROOT) -> ValidationResult:
+GitRunner = Callable[[list[str], Path], bytes]
+
+
+def validate(
+    repo_root: Path = REPO_ROOT,
+    *,
+    tracked_files: list[str] | None = None,
+    git_runner: GitRunner | None = None,
+) -> ValidationResult:
     _assert_required_files(repo_root)
-    tracked = _collect_tracked_files(repo_root)
+    tracked = _collect_tracked_files(repo_root, tracked_files=tracked_files, git_runner=git_runner)
     _assert_no_prohibited_artifacts(tracked)
     _assert_manifest_references_exist(repo_root)
     _assert_json_examples(repo_root)
@@ -120,14 +130,38 @@ def _assert_required_files(repo_root: Path) -> None:
         raise ValidationError(f"missing required file(s): {', '.join(sorted(missing))}")
 
 
-def _collect_tracked_files(repo_root: Path) -> list[Path]:
-    files: list[Path] = []
-    for path in repo_root.rglob("*"):
-        if ".git" in path.parts:
+def _collect_tracked_files(
+    repo_root: Path,
+    *,
+    tracked_files: list[str] | None = None,
+    git_runner: GitRunner | None = None,
+) -> list[Path]:
+    if tracked_files is None:
+        runner = git_runner or _run_git_ls_files
+        try:
+            output = runner(["git", "ls-files", "-z"], repo_root)
+        except ValidationError:
+            raise
+        except Exception as exc:
+            raise ValidationError(f"unable to obtain tracked files via git ls-files: {exc}") from exc
+        tracked_files = [item for item in output.decode("utf-8").split("\0") if item]
+
+    paths: list[Path] = []
+    for item in tracked_files:
+        normalized = item.replace("\\", "/")
+        if not normalized:
             continue
-        if path.is_file():
-            files.append(path.relative_to(repo_root))
-    return files
+        paths.append(Path(normalized))
+    return paths
+
+
+def _run_git_ls_files(command: list[str], repo_root: Path) -> bytes:
+    completed = subprocess.run(command, cwd=repo_root, check=False, capture_output=True)
+    if completed.returncode != 0:
+        stderr = completed.stderr.decode("utf-8", errors="replace").strip()
+        detail = f": {stderr}" if stderr else ""
+        raise ValidationError(f"unable to obtain tracked files via git ls-files{detail}")
+    return completed.stdout
 
 
 def _assert_no_prohibited_artifacts(tracked_files: list[Path]) -> None:
