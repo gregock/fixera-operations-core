@@ -19,9 +19,11 @@ Fixera Core was built to turn that scattered work into a practical internal syst
 
 Fixera Core models operational work as a pipeline rather than a set of disconnected tools.
 
-Notion is the active input surface for jobs. The Notion sync path maps those jobs into the canonical Core job model and stores them in SQLite. Job lifecycle changes are validated against canonical states before they are accepted. Costs, labor, and job price are captured on the job record. Profit is derived in `profit_analysis` rather than treated as a source ledger. Refresh writes dashboard snapshots, and the decision layer reads only existing data to produce prioritized, read-only outputs.
+In the private operational system, Notion is the active input surface for jobs. The intake path maps those jobs into the core job model and stores them in SQLite. Lifecycle changes are reviewed against canonical states before acceptance. Costs, labor, and price are captured on the job record. Profit is treated as derived analysis rather than a source ledger. Reporting refreshes produce snapshots, and the decision layer reads existing data to produce prioritized, read-only outputs.
 
-The public-safe representation in this repository focuses on the parts a reviewer can actually evaluate:
+This public repository documents that design at a public-safe level. It does not include the private runtime, private schema, private migrations, or the deployable backend implementation.
+
+The public-safe representation in this repository focuses on the parts a reviewer can evaluate directly:
 
 - intake and normalization
 - canonical job lifecycle control
@@ -30,7 +32,7 @@ The public-safe representation in this repository focuses on the parts a reviewe
 - read-only decision support
 - public/private evidence separation
 
-At the system level, that means the business can move from intake to operational state to financial summary to decision support without collapsing everything into free text.
+At the system level, the private design allows the business to move from intake to operational state to financial summary to decision support without collapsing everything into free text.
 
 ## Representative Flow
 
@@ -38,16 +40,16 @@ The flagship evidence package is here:
 
 [public-proof/examples/representative-operational-flow/](public-proof/examples/representative-operational-flow/)
 
-It shows one synthetic service job moving through the full flow:
+It shows one synthetic service job moving through a representative flow:
 
 1. A Notion-originated job arrives.
-2. The sync layer normalizes it into the Core job model.
-3. SQLite stores it as the canonical record.
-4. Lifecycle validation keeps status changes within allowed transitions.
+2. The intake path normalizes it into the core job model.
+3. SQLite is documented as the canonical record layer in the private system.
+4. Lifecycle review is represented as a controlled transition step.
 5. Hours, materials, and price are captured on the job.
-6. `profit_analysis` is recomputed from the job inputs.
-7. Refresh writes snapshots for the dashboard.
-8. The decision layer produces a prioritized action when the evidence supports it.
+6. `profit_analysis` is illustrated as a derived field.
+7. Reporting refresh is represented as a downstream step.
+8. The decision layer is shown as read-only review support.
 
 The supporting files in that package are:
 
@@ -64,19 +66,19 @@ Additional public evidence:
 
 ## Key Engineering Decisions
 
-- SQLite-first operational model. The private docs describe SQLite as the canonical operational database and the system of record.
-- Canonical lifecycle states. Job status is not free text; it is a controlled lifecycle with defined allowed transitions.
-- Validation before status transition. Notion sync and lifecycle helpers enforce transitions instead of accepting arbitrary updates.
-- Derived profit layer. `profit_analysis` is computed from job-related inputs rather than treated as source truth.
-- Read-only decision support. The decision layer ranks and surfaces actions, but does not execute them automatically.
+- SQLite-first operational model. The private system was designed around SQLite as the canonical operational database and system of record.
+- Canonical lifecycle states. Job status was designed as a controlled lifecycle rather than free text.
+- Review before status transition. The private system uses controlled lifecycle handling instead of arbitrary updates.
+- Derived profit layer. `profit_analysis` is documented as derived from job-related inputs rather than treated as source truth.
+- Read-only decision support. The decision layer is described as ranking and surfacing actions without auto-executing them.
 - Public/private evidence boundary. The portfolio publishes synthetic and sanitized evidence only, while the private production repository stays private.
-- Evidence package discipline. The public repository includes explicit provenance and validation notes so the sample cannot be mistaken for a production export.
+- Evidence package discipline. The public repository includes explicit provenance, validation notes, and automated public-evidence checks so the sample cannot be mistaken for a production export.
 
 ## Tradeoffs
 
-- The private `fixera-core` repository remains private, so the public case study has to rely on synthetic examples and sanitized evidence.
-- The public package is intentionally narrower than the production system; it shows one representative flow instead of every subsystem.
-- Lead-to-job attribution is not overstated. The current evidence supports decision support and job lifecycle modeling, but not a fully closed attribution story.
+- The private `fixera-core` repository remains private, so the public case study relies on synthetic examples and sanitized evidence.
+- The public package is intentionally narrower than the production system; it shows representative structure rather than the full implementation.
+- Lead-to-job attribution is not overstated. The current public evidence supports workflow and decision-support discussion, but not a full closed-loop attribution proof.
 - The local-first design favors ownership, simplicity, and direct control over cloud polish or broader platform abstraction.
 
 ## Evidence
@@ -88,8 +90,8 @@ Additional public evidence:
 
 ## What This Demonstrates
 
-This project demonstrates how I model operational work as a stateful system instead of a pile of notes and manual steps.
+This project documents how I model operational work as a stateful system instead of a pile of notes and manual steps.
 
-It shows operational modeling, lifecycle control, and financial attribution in a live small-business context. It also shows how to add automation with guardrails, keep decision support read-only, and preserve a clear boundary between private production evidence and public-safe portfolio material.
+It shows operational modeling, lifecycle control, and financial attribution in a real small-business context through public-safe documentation and synthetic evidence. It also shows how to add automation with guardrails, keep decision support read-only, and preserve a clear boundary between private production evidence and public-safe portfolio material.
 
-The main takeaway is practical system design: define the real state, validate transitions, derive outputs from the state, and keep the human responsible for the final decision.
+The main takeaway is practical system design: define the real state, control review boundaries, derive outputs from operational records, and keep the human responsible for the final decision.

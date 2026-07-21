@@ -6,7 +6,7 @@ This sample is considered public-safe because it follows these checks:
 
 - The job record is synthetic.
 - No names, emails, addresses, phone numbers, or client identifiers are included.
-- No timestamps tied to a real operational event are included.
+- Any example timestamp included in the sample package is synthetic and is not tied to a real customer or operational event.
 - No private runtime paths, credentials, or logs are included.
 - The lifecycle state is representative, not taken from a live record.
 

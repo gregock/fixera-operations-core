@@ -4,21 +4,21 @@ This document describes the public-safe architecture of Fixera Core.
 
 ## High-level shape
 
-Fixera Core is a local-first operational system for a service business.
+The private Fixera Core system was designed as a local-first operational system for a service business.
 
-The system uses:
+The private design uses:
 
 - Notion as the active intake surface for jobs
 - SQLite as the canonical operational store
-- validation helpers to control lifecycle transitions
+- controlled lifecycle handling
 - a refresh layer to generate summaries and dashboard outputs
 - read-only decision support for prioritization
 
-The public representation shows the same shape at a safer resolution:
+This public repository documents the same shape at a safer resolution:
 
 - source events enter through an intake layer
 - canonical job records are stored in SQLite
-- lifecycle transitions are validated before acceptance
+- lifecycle transitions are represented as controlled review steps
 - profit is derived from job inputs rather than written as a source ledger
 - refresh produces dashboard snapshots and supporting reports
 - the decision layer reads existing data only
@@ -27,7 +27,7 @@ The public representation shows the same shape at a safer resolution:
 
 1. A job enters through the intake layer.
 2. The job is normalized into the internal record shape.
-3. Lifecycle transitions are validated before they are accepted.
+3. Lifecycle transitions are represented as controlled review steps.
 4. Costs, labor, and price are stored on the job record.
 5. Profit is derived from the recorded inputs.
 6. Refresh generates reporting snapshots.
@@ -44,4 +44,5 @@ The public representation shows the same shape at a safer resolution:
 
 ## Public boundary
 
-This portfolio edition documents the system structure without exposing production data, secrets, or internal runtime details.
+This portfolio edition documents the system structure without exposing production data, production databases, private backend code, credentials, customer records, or sensitive operational details.
+The public diagrams may retain abstracted runtime component names and artifact categories where they help explain the architecture without exposing deployable private implementation.

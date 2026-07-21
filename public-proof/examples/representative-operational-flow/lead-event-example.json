@@ -8,6 +8,7 @@
   "campaign": "synthetic-demo",
   "cta_label": "WhatsApp",
   "timestamp_utc": "2026-06-12T08:15:00Z",
+  "timestamp_note": "Synthetic example timestamp only; not tied to a real customer or operational event.",
   "is_test": false,
   "is_internal": false,
   "notes": [
