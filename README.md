@@ -128,3 +128,7 @@ The goal is to make the public repository strong enough for technical review by 
 - the boundary between source records and derived outputs
 - the lifecycle and review model
 - the public-safe evidence trail and validation discipline
+
+## License
+
+This repository is available for portfolio review and professional evaluation under the [Portfolio Evaluation License](LICENSE). It is not open source and may not be used in production, redistributed, or incorporated into another project without prior written permission.
